@@ -363,9 +363,6 @@ class __TwigTemplate_3ddc7420ddcafc94cb93d0d44bc7fc20 extends Template
             \$('#tr'+id).empty(); 
             \$(\"#tr\"+id).append(\"<td>\"+id+\"</td><td>\"+data.user.fullname+\"</td><td>\"+data.user.email+\"</td><td><button class='btn' onclick='updateFormFunction(\"+id+\")'><i class='fas fa-edit'></i>Edit</button><button class='btn bg-danger' onclick='deleteFunction(\"+id+\")'><i class='fas fa-trash'></i>Supprimer</button></td></tr>\");
             alert(data.message);
-            document.getElementById(\"id\").value = null;
-            document.getElementById(\"email\").value = null;
-            document.getElementById(\"fullname\").value = null;
           },
           error:  function error(response){
             try{
@@ -388,7 +385,7 @@ class __TwigTemplate_3ddc7420ddcafc94cb93d0d44bc7fc20 extends Template
   function addUser(user){
     \$.ajax({
           url:\"";
-        // line 232
+        // line 229
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_user");
         echo "\",
           type:\"POST\",
@@ -397,6 +394,9 @@ class __TwigTemplate_3ddc7420ddcafc94cb93d0d44bc7fc20 extends Template
           success: function(data){
             id = data.id;
             \$(\"#users_list\").append(\"<tr id='tr\"+id+\"'><td>\"+id+\"</td><td>\"+user.fullname+\"</td><td>\"+user.email+\"</td><td><button class='btn' onclick='updateFormFunction(\"+id+\")'><i class='fas fa-edit'></i>Edit</button><button class='btn bg-danger' onclick='deleteFunction(\"+id+\")'><i class='fas fa-trash'></i>Supprimer</button></td></tr>\");
+            document.getElementById(\"id\").value = null;
+            document.getElementById(\"email\").value = null;
+            document.getElementById(\"fullname\").value = null;
           },
           error:  function error(response){
             try{
@@ -439,7 +439,7 @@ class __TwigTemplate_3ddc7420ddcafc94cb93d0d44bc7fc20 extends Template
 
     public function getDebugInfo()
     {
-        return array (  392 => 232,  274 => 116,  264 => 115,  223 => 83,  214 => 79,  205 => 75,  201 => 74,  196 => 72,  192 => 71,  188 => 70,  183 => 69,  178 => 68,  140 => 32,  138 => 31,  113 => 8,  111 => 7,  109 => 6,  99 => 5,  80 => 4,  61 => 3,  38 => 1,);
+        return array (  389 => 229,  274 => 116,  264 => 115,  223 => 83,  214 => 79,  205 => 75,  201 => 74,  196 => 72,  192 => 71,  188 => 70,  183 => 69,  178 => 68,  140 => 32,  138 => 31,  113 => 8,  111 => 7,  109 => 6,  99 => 5,  80 => 4,  61 => 3,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -651,9 +651,6 @@ class __TwigTemplate_3ddc7420ddcafc94cb93d0d44bc7fc20 extends Template
             \$('#tr'+id).empty(); 
             \$(\"#tr\"+id).append(\"<td>\"+id+\"</td><td>\"+data.user.fullname+\"</td><td>\"+data.user.email+\"</td><td><button class='btn' onclick='updateFormFunction(\"+id+\")'><i class='fas fa-edit'></i>Edit</button><button class='btn bg-danger' onclick='deleteFunction(\"+id+\")'><i class='fas fa-trash'></i>Supprimer</button></td></tr>\");
             alert(data.message);
-            document.getElementById(\"id\").value = null;
-            document.getElementById(\"email\").value = null;
-            document.getElementById(\"fullname\").value = null;
           },
           error:  function error(response){
             try{
@@ -682,6 +679,9 @@ class __TwigTemplate_3ddc7420ddcafc94cb93d0d44bc7fc20 extends Template
           success: function(data){
             id = data.id;
             \$(\"#users_list\").append(\"<tr id='tr\"+id+\"'><td>\"+id+\"</td><td>\"+user.fullname+\"</td><td>\"+user.email+\"</td><td><button class='btn' onclick='updateFormFunction(\"+id+\")'><i class='fas fa-edit'></i>Edit</button><button class='btn bg-danger' onclick='deleteFunction(\"+id+\")'><i class='fas fa-trash'></i>Supprimer</button></td></tr>\");
+            document.getElementById(\"id\").value = null;
+            document.getElementById(\"email\").value = null;
+            document.getElementById(\"fullname\").value = null;
           },
           error:  function error(response){
             try{

@@ -32,8 +32,6 @@ class UserService
 
     public function handleValidForm(UserPasswordHasherInterface $userPasswordHasher,FormInterface $userForm){
 
-
-        /** @var Video $video */
         $user = $userForm->getData();
         $user->setPassword(
             $userPasswordHasher->hashPassword(
