@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion!{% endblock %}
+{% block cssbody %} class="hold-transition login-page" {% endblock %}
+{% block body %}
+
+<div class="login-box">
+  <div class="login-logo">
+    <a href="#"><b>Admin</b>LTE</a>
+  </div>
+  {% include '_partials/_flash.html.twig' %}
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+        <form method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+
+            <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+            <label for="inputEmail">Email</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+            <label for="inputPassword">Password</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+            <input type="hidden" name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}"
+            >
+            {#
+                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                See https://symfony.com/doc/current/security/remember_me.html
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Remember me
+                    </label>
+                </div>
+            #}
+
+            <button class="btn btn-primary btn-block" style="margin:15px 0px 10px;" type="submit">
+                Connexion
+            </button>
+        </form>
+      <!-- /.social-auth-links -->
+      <p class="mb-1">
+        <a href="{{ path('forgotten_password') }}">Mot de passe oublié?</a>
+      </p>
+      <p class="mb-0">
+        <a href="{{ path('app_register')}}" class="text-center">S'inscrire</a>
+      </p>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+{% endblock %}
