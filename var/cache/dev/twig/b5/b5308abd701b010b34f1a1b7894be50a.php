@@ -144,7 +144,7 @@ class __TwigTemplate_3ddc7420ddcafc94cb93d0d44bc7fc20 extends Template
                   <h3 class=\"card-title\">Users</h3>
               </div> <!-- /.card-body -->
               <div class=\"card-body\">
-                  <form id=\"form\"  >
+                  <form id=\"form\">
                     <input type=\"hidden\" id=\"id\">
                     <label for=\"user_form_fullname\" class=\"required\">Nom Prénom :</label>
                     <input class=\"form-control\" placeholder=\"Nom Prénom\" id=\"fullname\" required=\"required\" type=\"text\" name=\"nom\">
@@ -271,153 +271,9 @@ class __TwigTemplate_3ddc7420ddcafc94cb93d0d44bc7fc20 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "script"));
 
         // line 116
-        echo "
-<script>
-  function handleForm(){
-    id = \$(\"#id\").val();
-    name = \$(\"#fullname\").val();
-    email = \$(\"#email\").val();
-    password = \$(\"#password\").val(); 
-    var user =
-        {
-          fullname : name,
-          password : password,
-          email : email
-        };
-    if(!id){
-      addUser(user); 
-    }else{
-      updateUser(user , id); 
-    }
-  }
-
-  function deleteFunction(id){
-    \$('#modal-danger').data('id', id).modal('show'); 
-
-    \$(\"body\").on('click', '#btnDelteYes', function() {
-    var id = \$('#modal-danger').data('id');
-    \$('#modal-danger').modal('hide');
-    \$.ajax({
-          url:\"/api/user/delete/\"+id,
-          type:\"DELETE\",
-          success: function(data){
-            alert(data.message); 
-            \$(\"#tr\"+id).remove();
-          },
-          error:  function error(response){
-            try{
-              var json = JSON.parse(response.responseText);
-              if(typeof json.message === 'undefined'){
-                throw new Error(\"Response json has no message\");
-              }
-              else{
-                alert(json.message);
-              }
-            }
-          catch(ex){
-            alert(\"unexpected error (code:\" + response.status +\")\");
-          }
-        }
-
-      });
-   
-  });
-  }
-
-  function updateFormFunction(id){
-    \$.ajax({
-          url:\"/api/getuser/\"+id,
-          type:\"GET\",
-          success: function(data){
-            console.log(data); 
-            \$('#id').val(data.id); 
-            \$('#email').val(data.email); 
-            \$('#fullname').val(data.fullname); 
-          },
-          error:  function error(response){
-            try{
-              var json = JSON.parse(response.responseText);
-              if(typeof json.message === 'undefined'){
-                throw new Error(\"Response json has no message\");
-              }
-              else{
-                alert(json.message);
-              }
-            }catch(ex){
-            alert(\"unexpected error (code:\" + response.status +\")\");
-            }
-          }
-
-      });
-
-  }
-
-  function updateUser(user , id){
-    \$.ajax({
-          url:\"user/edit/\"+id,
-          type:\"PUT\",
-          data:JSON.stringify(user),
-          contentType: 'application/json',
-          success: function(data){
-            console.log(data); 
-            \$('#tr'+id).empty(); 
-            \$(\"#tr\"+id).append(\"<td>\"+id+\"</td><td>\"+data.user.fullname+\"</td><td>\"+data.user.email+\"</td><td><button class='btn' onclick='updateFormFunction(\"+id+\")'><i class='fas fa-edit'></i>Edit</button><button class='btn bg-danger' onclick='deleteFunction(\"+id+\")'><i class='fas fa-trash'></i>Supprimer</button></td></tr>\");
-            alert(data.message);
-          },
-          error:  function error(response){
-            try{
-              var json = JSON.parse(response.responseText);
-              if(typeof json.message === 'undefined'){
-                throw new Error(\"Response json has no message\");
-              }
-              else{
-                alert(json.message);
-              }
-            }
-          catch(ex){
-            alert(\"unexpected error (code:\" + response.status +\")\");
-          }
-        }
-
-      });
-  }
-
-  function addUser(user){
-    \$.ajax({
-          url:\"";
-        // line 229
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_user");
-        echo "\",
-          type:\"POST\",
-          data:JSON.stringify(user),
-          contentType: 'application/json',
-          success: function(data){
-            id = data.id;
-            \$(\"#users_list\").append(\"<tr id='tr\"+id+\"'><td>\"+id+\"</td><td>\"+user.fullname+\"</td><td>\"+user.email+\"</td><td><button class='btn' onclick='updateFormFunction(\"+id+\")'><i class='fas fa-edit'></i>Edit</button><button class='btn bg-danger' onclick='deleteFunction(\"+id+\")'><i class='fas fa-trash'></i>Supprimer</button></td></tr>\");
-            document.getElementById(\"id\").value = null;
-            document.getElementById(\"email\").value = null;
-            document.getElementById(\"fullname\").value = null;
-          },
-          error:  function error(response){
-            try{
-              var json = JSON.parse(response.responseText);
-              if(typeof json.message === 'undefined'){
-                throw new Error(\"Response json has no message\");
-              }
-              else{
-                alert(json.message);
-              }
-            }
-          catch(ex){
-            alert(\"unexpected error (code:\" + response.status +\")\");
-          }
-        }
-      });
-
-  }
-
-</script>
-
+        echo "  <script src=\"";
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/dist/js/custom.js"), "html", null, true);
+        echo "\"></script>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -439,7 +295,7 @@ class __TwigTemplate_3ddc7420ddcafc94cb93d0d44bc7fc20 extends Template
 
     public function getDebugInfo()
     {
-        return array (  389 => 229,  274 => 116,  264 => 115,  223 => 83,  214 => 79,  205 => 75,  201 => 74,  196 => 72,  192 => 71,  188 => 70,  183 => 69,  178 => 68,  140 => 32,  138 => 31,  113 => 8,  111 => 7,  109 => 6,  99 => 5,  80 => 4,  61 => 3,  38 => 1,);
+        return array (  274 => 116,  264 => 115,  223 => 83,  214 => 79,  205 => 75,  201 => 74,  196 => 72,  192 => 71,  188 => 70,  183 => 69,  178 => 68,  140 => 32,  138 => 31,  113 => 8,  111 => 7,  109 => 6,  99 => 5,  80 => 4,  61 => 3,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -482,7 +338,7 @@ class __TwigTemplate_3ddc7420ddcafc94cb93d0d44bc7fc20 extends Template
                   <h3 class=\"card-title\">Users</h3>
               </div> <!-- /.card-body -->
               <div class=\"card-body\">
-                  <form id=\"form\"  >
+                  <form id=\"form\">
                     <input type=\"hidden\" id=\"id\">
                     <label for=\"user_form_fullname\" class=\"required\">Nom Prénom :</label>
                     <input class=\"form-control\" placeholder=\"Nom Prénom\" id=\"fullname\" required=\"required\" type=\"text\" name=\"nom\">
@@ -559,150 +415,7 @@ class __TwigTemplate_3ddc7420ddcafc94cb93d0d44bc7fc20 extends Template
       </div>
 {% endblock %}
 {% block script %}
-
-<script>
-  function handleForm(){
-    id = \$(\"#id\").val();
-    name = \$(\"#fullname\").val();
-    email = \$(\"#email\").val();
-    password = \$(\"#password\").val(); 
-    var user =
-        {
-          fullname : name,
-          password : password,
-          email : email
-        };
-    if(!id){
-      addUser(user); 
-    }else{
-      updateUser(user , id); 
-    }
-  }
-
-  function deleteFunction(id){
-    \$('#modal-danger').data('id', id).modal('show'); 
-
-    \$(\"body\").on('click', '#btnDelteYes', function() {
-    var id = \$('#modal-danger').data('id');
-    \$('#modal-danger').modal('hide');
-    \$.ajax({
-          url:\"/api/user/delete/\"+id,
-          type:\"DELETE\",
-          success: function(data){
-            alert(data.message); 
-            \$(\"#tr\"+id).remove();
-          },
-          error:  function error(response){
-            try{
-              var json = JSON.parse(response.responseText);
-              if(typeof json.message === 'undefined'){
-                throw new Error(\"Response json has no message\");
-              }
-              else{
-                alert(json.message);
-              }
-            }
-          catch(ex){
-            alert(\"unexpected error (code:\" + response.status +\")\");
-          }
-        }
-
-      });
-   
-  });
-  }
-
-  function updateFormFunction(id){
-    \$.ajax({
-          url:\"/api/getuser/\"+id,
-          type:\"GET\",
-          success: function(data){
-            console.log(data); 
-            \$('#id').val(data.id); 
-            \$('#email').val(data.email); 
-            \$('#fullname').val(data.fullname); 
-          },
-          error:  function error(response){
-            try{
-              var json = JSON.parse(response.responseText);
-              if(typeof json.message === 'undefined'){
-                throw new Error(\"Response json has no message\");
-              }
-              else{
-                alert(json.message);
-              }
-            }catch(ex){
-            alert(\"unexpected error (code:\" + response.status +\")\");
-            }
-          }
-
-      });
-
-  }
-
-  function updateUser(user , id){
-    \$.ajax({
-          url:\"user/edit/\"+id,
-          type:\"PUT\",
-          data:JSON.stringify(user),
-          contentType: 'application/json',
-          success: function(data){
-            console.log(data); 
-            \$('#tr'+id).empty(); 
-            \$(\"#tr\"+id).append(\"<td>\"+id+\"</td><td>\"+data.user.fullname+\"</td><td>\"+data.user.email+\"</td><td><button class='btn' onclick='updateFormFunction(\"+id+\")'><i class='fas fa-edit'></i>Edit</button><button class='btn bg-danger' onclick='deleteFunction(\"+id+\")'><i class='fas fa-trash'></i>Supprimer</button></td></tr>\");
-            alert(data.message);
-          },
-          error:  function error(response){
-            try{
-              var json = JSON.parse(response.responseText);
-              if(typeof json.message === 'undefined'){
-                throw new Error(\"Response json has no message\");
-              }
-              else{
-                alert(json.message);
-              }
-            }
-          catch(ex){
-            alert(\"unexpected error (code:\" + response.status +\")\");
-          }
-        }
-
-      });
-  }
-
-  function addUser(user){
-    \$.ajax({
-          url:\"{{ path('add_user') }}\",
-          type:\"POST\",
-          data:JSON.stringify(user),
-          contentType: 'application/json',
-          success: function(data){
-            id = data.id;
-            \$(\"#users_list\").append(\"<tr id='tr\"+id+\"'><td>\"+id+\"</td><td>\"+user.fullname+\"</td><td>\"+user.email+\"</td><td><button class='btn' onclick='updateFormFunction(\"+id+\")'><i class='fas fa-edit'></i>Edit</button><button class='btn bg-danger' onclick='deleteFunction(\"+id+\")'><i class='fas fa-trash'></i>Supprimer</button></td></tr>\");
-            document.getElementById(\"id\").value = null;
-            document.getElementById(\"email\").value = null;
-            document.getElementById(\"fullname\").value = null;
-          },
-          error:  function error(response){
-            try{
-              var json = JSON.parse(response.responseText);
-              if(typeof json.message === 'undefined'){
-                throw new Error(\"Response json has no message\");
-              }
-              else{
-                alert(json.message);
-              }
-            }
-          catch(ex){
-            alert(\"unexpected error (code:\" + response.status +\")\");
-          }
-        }
-      });
-
-  }
-
-</script>
-
+  <script src=\"{{asset('assets/dist/js/custom.js')}}\"></script>
 {% endblock %}", "user/index.html.twig", "C:\\xampp\\htdocs\\gestion-users\\templates\\user\\index.html.twig");
     }
 }
